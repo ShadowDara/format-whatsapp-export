@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Export</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>Whatsapp Chat Export</h1>
+    </header>
+    <main>
+        {{range .}}
+        <div class="main-box">
+            <div class="author">{{.Sender}}</div>
+            <div class="message">{{.Content}}</div>
+            <div class="time">{{.Date}} - {{.Time}}</div>
+        </div>
+        {{end}}
+    </main>
+    <footer>
+        <p>Made with ❤️ by Shadowdara</p>
+    </footer>
+</body>
+</html>
