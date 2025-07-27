@@ -1,0 +1,6 @@
+out/** linguist-ignore
+out/** linguist-vendored
+
+static/data.js
+
+*.exe

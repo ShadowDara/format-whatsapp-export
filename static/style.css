@@ -39,8 +39,10 @@ main {
     background-color: tomato;
     border-radius: 10px;
     padding: 4px 8px;
-    display: inline-block;   /* ← passt die Breite dem Inhalt an */
-    white-space: nowrap;     /* ← verhindert Zeilenumbruch */
+    display: inline-block;
+    /* ← passt die Breite dem Inhalt an */
+    white-space: nowrap;
+    /* ← verhindert Zeilenumbruch */
 }
 
 .main-box .message {
@@ -60,7 +62,8 @@ header {
     color: white;
     padding: 0.75rem;
     text-align: center;
-    z-index: 1000; /* Damit es über anderem Content liegt */
+    z-index: 1000;
+    /* Damit es über anderem Content liegt */
 }
 
 footer {
