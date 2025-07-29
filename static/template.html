@@ -9,20 +9,30 @@
 
 <body>
     <header>
-        <span>
+        <span class="header-container">
             <p>
                 <span>Page: </span>
                 <span id="page_number"></span>
             </p>
+        </span>
+        <span class="header-container">
             <p>
                 <span>Message Count: </span>
                 <span id="message_count"></span>
             </p>
         </span>
-        <span>
+
+        <!-- Header Main -->
+        <span class="header-main-container">
             <p class="heading">Whatsapp Chat Export</p>
         </span>
-        <span><button>Settings</button></span>
+
+        <span class="header-container">
+            <input type="text" id="search" placeholder="Search">
+        </span>
+        <span class="header-container">
+            <button id="settings">Settings</button>
+        </span>
     </header>
 
     <main>

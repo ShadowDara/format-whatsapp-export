@@ -67,16 +67,24 @@ header {
     display: flex;
     justify-content: center; /* Horizontal zentrieren */
     align-items: center;     /* Vertikal zentrieren */
-    gap: 30%;
+    gap: 1%;
     width: 100%;
+}
+
+header .header-main-container {
+    width: 26%;
+}
+
+header .header-container {
+    width: 16%;
 }
 
 header .heading {
     font-size: 1.7rem;
 }
 
-header button {
-    
+header button, input {
+    padding: 0.1rem 1rem;
 }
 
 footer {
