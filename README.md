@@ -8,6 +8,8 @@
 - [ ] add links as links
 - [ ] add images and other files too
 - [ ] calculate messages and other statistics
+- [ ] need to listen on change for the settings
+- [ ] add Dark Mode
 
 ## Changes
 - go writes the output in the html files as js which will then

@@ -35,6 +35,21 @@
         </span>
     </header>
 
+    <!-- Settings Popup -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <button id="closeModalBtn">Close Button</button>
+            <h2>Statistics</h2>
+            <p><i>added soon</i></p>
+
+            <!-- Settings -->
+            <h2>Settings</h2>
+            <label>
+                <input type="checkbox" id="show_pictures"> show Pictures
+            </label>
+        </div>
+    </div>
+
     <main>
         <noscript>Bitte JavaScript aktivieren, um den Chat anzuzeigen.</noscript>
         <!-- Messages will be inserted here! -->
@@ -42,9 +57,13 @@
     </main>
 
     <footer>
-        <span><button id="previous_page">Previous Page</button></span>
+        <span>
+            <button id="previous_page">Previous Page</button>
+        </span>
         <span>Made with ❤️ by Shadowdara</span>
-        <span><button id="next_page">Next Page</button></span>
+        <span>
+            <button id="next_page">Next Page</button>
+        </span>
     </footer>
 
     <script src="data.js">
