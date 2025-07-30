@@ -5,7 +5,7 @@ let count_end = 30;
 let page_nr = 1;
 let msg_count = 1;
 /* Message Variable for the Search Function */
-let sr_messages = []
+let sr_messages = [];
 
 /* Settings Values */
 const show_pictures = document.getElementById("show_pictures").checked;
@@ -81,15 +81,10 @@ function regexsearch(eingabe) {
 
 /* to add a Message on the HTML Site */
 function do_count(c1, c2, data) {
-    document.getElementById("msg-store").innerHTML = ""
+    document.getElementById("msg-store").innerHTML = "";
     
     for (const entry of data.slice(c1, c2)) {
-        document.getElementById("msg-store").innerHTML += `
-        <div class="main-box">
-            <div class="author">${entry.sender}</div>
-            <div class="message">${entry.msg}</div>
-            <div class="time">${entry.date} ${entry.time}</div>
-        </div>`;
+        document.getElementById("msg-store").innerHTML += `<div class="main-box"><div class="author">${entry.sender}</div><div class="message">${entry.msg}</div><div class="time">${entry.date} ${entry.time}</div></div>`;
     }
     
     document.getElementById("page_number").innerText = page_nr;
