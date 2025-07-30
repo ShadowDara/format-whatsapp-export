@@ -1,4 +1,4 @@
-module wa-export
+module github.com/shadowdara/format-whatsapp-export
 
 go 1.24.2
 

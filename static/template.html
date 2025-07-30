@@ -31,18 +31,24 @@
             <input type="text" id="search" placeholder="Search">
         </span>
         <span class="header-container">
+            <button id="statistics">Statistics</button>
             <button id="settings">Settings</button>
         </span>
     </header>
 
-    <!-- Settings Popup -->
-    <div id="modalOverlay" class="modal-overlay">
+    <!-- Statistics Popup -->
+    <div id="statistics_modalOverlay" class="modal-overlay">
         <div class="modal">
-            <button id="closeModalBtn">Close Button</button>
+            <button id="statistics_closeModalBtn">Close Button</button>
             <h2>Statistics</h2>
             <p><i>added soon</i></p>
+        </div>
+    </div>
 
-            <!-- Settings -->
+    <!-- Settings Popup -->
+    <div id="settings_modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <button id="settings_closeModalBtn">Close Button</button>
             <h2>Settings</h2>
             <label>
                 <input type="checkbox" id="show_pictures"> show Pictures

@@ -1,16 +1,16 @@
-// Virtual Dom for the Messages
+/* Virtual Dom for the Messages */
 
 let count = 0;
 let count_end = 30;
 let page_nr = 1;
 let msg_count = 1;
-// Message Variable for the Search Function
+/* Message Variable for the Search Function */
 let sr_messages = []
 
-// Settings Values
+/* Settings Values */
 const show_pictures = document.getElementById("show_pictures").checked;
 
-// Switch to the Previous Messages Page
+/* Switch to the Previous Messages Page */
 document.getElementById("next_page").onclick = () => {
     count += 30;
     count_end += 30;
@@ -18,7 +18,7 @@ document.getElementById("next_page").onclick = () => {
     do_count(count, count_end);
 };
 
-// Switch to the Next Messages Page
+/* Switch to the Next Messages Page */
 document.getElementById("previous_page").onclick = () => {
     if (count >= 30) {
         count -= 30;
@@ -30,26 +30,45 @@ document.getElementById("previous_page").onclick = () => {
     }
 };
 
-// Settings POPUP Window
-const openBtn = document.getElementById("settings");
-const closeBtn = document.getElementById("closeModalBtn");
-const overlay = document.getElementById("modalOverlay");
+/* Statistics POPUP Window */
+const statistics_openBtn = document.getElementById("statistics");
+const statistics_closeBtn = document.getElementById("statistics_closeModalBtn");
+const statistics_overlay = document.getElementById("statistics_modalOverlay");
 
-openBtn.addEventListener("click", () => {
-    overlay.style.display = "flex";
+statistics_openBtn.addEventListener("click", () => {
+    statistics_overlay.style.display = "flex";
 });
 
-closeBtn.addEventListener("click", () => {
-    overlay.style.display = "none";
+statistics_closeBtn.addEventListener("click", () => {
+    statistics_overlay.style.display = "none";
 });
 
-overlay.addEventListener("click", (event) => {
-    if (event.target === overlay) {
-        overlay.style.display = "none";
+statistics_overlay.addEventListener("click", (event) => {
+    if (event.target === statistics_overlay) {
+        statistics_overlay.style.display = "none";
     }
 });
 
-// Regex Search for Messages
+/* Settings POPUP Window */
+const settings_openBtn = document.getElementById("settings");
+const settings_closeBtn = document.getElementById("settings_closeModalBtn");
+const settings_overlay = document.getElementById("settings_modalOverlay");
+
+settings_openBtn.addEventListener("click", () => {
+    settings_overlay.style.display = "flex";
+});
+
+settings_closeBtn.addEventListener("click", () => {
+    settings_overlay.style.display = "none";
+});
+
+settings_overlay.addEventListener("click", (event) => {
+    if (event.target === settings_overlay) {
+        settings_overlay.style.display = "none";
+    }
+});
+
+/* Regex Search for Messages */
 function regexsearch(eingabe) {
     const escaped = eingabe
         .trim()
@@ -60,7 +79,7 @@ function regexsearch(eingabe) {
     return new RegExp(escaped, 'i');
 }
 
-// to add a Message on the HTML Site
+/* to add a Message on the HTML Site */
 function do_count(c1, c2, data) {
     document.getElementById("msg-store").innerHTML = ""
     
@@ -77,19 +96,19 @@ function do_count(c1, c2, data) {
 }
 
 
-// EXECUTING CODE
+/* EXECUTING CODE */
 
-// When no data
+/* When no data */
 document.getElementById("msg-store").innerHTML = "<pre>No Data Available!<pre>";
 
-// Inserting the Data
+/* Inserting the Data */
 for (const entry of window.json_data) {
     msg_count += 1;
 }
 document.getElementById("message_count").innerText = msg_count;
 do_count(count, count_end, window.json_data);
 
-// Search Bar
+/* Search Bar */
 document.getElementById("search").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -109,7 +128,7 @@ document.getElementById("search").addEventListener("keypress", function (event) 
         document.getElementById("message_count").innerText = msg_count;
         do_count(count, count_end, sr_messages);
 
-        // Search Works
+        /* Search Works */
         alert(`${msg_count} Results`);
     }
 });

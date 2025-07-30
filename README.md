@@ -10,6 +10,8 @@
 - [ ] calculate messages and other statistics
 - [ ] need to listen on change for the settings
 - [ ] add Dark Mode
+- [ ] add Hover CSS
+- [ ] ADD A WORKING VERSION OF THE PROGRAMM !!!
 
 ## Changes
 - go writes the output in the html files as js which will then
