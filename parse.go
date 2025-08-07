@@ -67,8 +67,7 @@ func parse(filePath string) {
     }
 
     // Template laden
-    tmplPath := filepath.Join(ExeDir, "out", "template.htm")
-    tmpl, err := template.ParseFiles(tmplPath)
+    tmpl, err := template.New("example").Parse(htmltemplate)
     if err != nil {
         panic(err)
     }

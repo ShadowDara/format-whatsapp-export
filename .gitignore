@@ -6,3 +6,5 @@ checkstaticfiles.data.go
 static/data.js
 
 *.exe
+
+output.html
