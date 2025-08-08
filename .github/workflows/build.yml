@@ -16,9 +16,7 @@ jobs:
           - goos: linux
             goarch: amd64
             runner: ubuntu-latest
-          - goos: linux
-            goarch: arm64
-            runner: ubuntu-latest
+          
           - goos: windows
             goarch: amd64
             runner: ubuntu-latest
