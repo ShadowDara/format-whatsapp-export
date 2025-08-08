@@ -16,7 +16,9 @@ jobs:
           - goos: linux
             goarch: amd64
             runner: ubuntu-latest
-          
+          - goos: linux
+            goarch: arm64
+            runner: ubuntu-22.04
           - goos: windows
             goarch: amd64
             runner: ubuntu-latest
@@ -116,9 +118,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: release-assets
-
-      - name: List release assets
-        run: find release-assets -type f
+          merge-multiple: true
 
       - name: Create GitHub Release with assets
         uses: ncipollo/release-action@v1
@@ -127,4 +127,4 @@ jobs:
           name: Release ${{ github.ref_name }}
           body: |
             Release built by CI for tag ${{ github.ref_name }}.
-          files: release-assets/**/*
+          files: release-assets/*
