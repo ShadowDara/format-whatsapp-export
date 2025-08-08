@@ -1,4 +1,4 @@
-name: Build & Release with CGO for Linux
+name: Build & Release with CGO for Linux and proper macOS runners
 
 on:
   push:
@@ -10,12 +10,29 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        goos: [linux, darwin, windows]
-        goarch: [amd64, arm64]
+        include:
+          - goos: linux
+            goarch: amd64
+            runner: ubuntu-latest
+          - goos: linux
+            goarch: arm64
+            runner: ubuntu-latest
+          - goos: windows
+            goarch: amd64
+            runner: ubuntu-latest
+          - goos: windows
+            goarch: arm64
+            runner: ubuntu-latest
+          - goos: darwin
+            goarch: amd64
+            runner: macos-latest
+          - goos: darwin
+            goarch: arm64
+            runner: macos-latest
+
+    runs-on: ${{ matrix.runner }}
 
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +48,7 @@ jobs:
 
       # Linux braucht GTK Dev libs für CGO
       - name: Install GTK3 on Linux
-        if: matrix.goos == 'linux'
+        if: matrix.goos == 'linux' && matrix.runner == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev
@@ -44,16 +61,14 @@ jobs:
           TAG="${{ steps.tag.outputs.TAG }}"
           BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-          # Binary Name mit Extension für Windows
           if [ "${{ matrix.goos }}" = "windows" ]; then
             OUT="${BINNAME}-${{ matrix.goos }}-${{ matrix.goarch }}.exe"
           else
             OUT="${BINNAME}-${{ matrix.goos }}-${{ matrix.goarch }}"
           fi
 
-          echo "Building ${OUT} (GOOS=${{ matrix.goos }}, GOARCH=${{ matrix.goarch }})"
+          echo "Building ${OUT} (GOOS=${{ matrix.goos }}, GOARCH=${{ matrix.goarch }}, RUNNER=${{ matrix.runner }})"
 
-          # CGO aktiv nur für Linux, sonst deaktiviert
           if [ "${{ matrix.goos }}" = "linux" ]; then
             CGO_ENABLED=1
           else
@@ -65,7 +80,6 @@ jobs:
           env CGO_ENABLED=$CGO_ENABLED GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
             go build -ldflags="$ldflags" -o "dist/${OUT}" ./...
 
-          # Archivieren
           cd dist
           if [ "${{ matrix.goos }}" = "windows" ]; then
             zip -r "${OUT}.zip" "${OUT}"
