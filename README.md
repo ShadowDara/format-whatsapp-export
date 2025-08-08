@@ -10,7 +10,7 @@ git tag v0.1.0 && git push origin v0.1.0
 
 ## How
 
-Download the programm for your OS and follow the intructions from the programm
+[Download](https://github.com/ShadowDara/format-whatsapp-export/releases) the programm for your OS and follow the intructions from the programm
 
 ## TODO / Ideas
 - [ ] add Description and Explanation to the Program

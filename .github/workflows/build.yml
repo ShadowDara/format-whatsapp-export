@@ -69,7 +69,7 @@ jobs:
 
           echo "Building ${OUT} (GOOS=${{ matrix.goos }}, GOARCH=${{ matrix.goarch }}, RUNNER=${{ matrix.runner }})"
 
-          if [ "${{ matrix.goos }}" = "linux" ]; then
+          if [ "${{ matrix.goos }}" = "linux" ] || [ "${{ matrix.goos }}" = "darwin" ]; then
             CGO_ENABLED=1
           else
             CGO_ENABLED=0
