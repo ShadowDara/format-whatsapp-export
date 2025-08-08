@@ -1,0 +1,101 @@
+name: Build & Release with CGO for Linux
+
+on:
+  push:
+    tags:
+      - '*'  # z.B. v1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        goos: [linux, darwin, windows]
+        goarch: [amd64, arm64]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Get version (tag)
+        id: tag
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      # Linux braucht GTK Dev libs für CGO
+      - name: Install GTK3 on Linux
+        if: matrix.goos == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev
+
+      - name: Build binaries
+        run: |
+          set -e
+          mkdir -p dist
+          BINNAME="myprogram"
+          TAG="${{ steps.tag.outputs.TAG }}"
+          BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          # Binary Name mit Extension für Windows
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            OUT="${BINNAME}-${{ matrix.goos }}-${{ matrix.goarch }}.exe"
+          else
+            OUT="${BINNAME}-${{ matrix.goos }}-${{ matrix.goarch }}"
+          fi
+
+          echo "Building ${OUT} (GOOS=${{ matrix.goos }}, GOARCH=${{ matrix.goarch }})"
+
+          # CGO aktiv nur für Linux, sonst deaktiviert
+          if [ "${{ matrix.goos }}" = "linux" ]; then
+            CGO_ENABLED=1
+          else
+            CGO_ENABLED=0
+          fi
+
+          ldflags="-X 'main.version=${TAG}' -X 'main.buildTime=${BUILDTIME}'"
+
+          env CGO_ENABLED=$CGO_ENABLED GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
+            go build -ldflags="$ldflags" -o "dist/${OUT}" ./...
+
+          # Archivieren
+          cd dist
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            zip -r "${OUT}.zip" "${OUT}"
+          else
+            tar -czf "${OUT}.tar.gz" "${OUT}"
+          fi
+          cd ..
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: "${{ matrix.goos }}-${{ matrix.goarch }}"
+          path: |
+            dist/*${{ matrix.goos }}-${{ matrix.goarch }}*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: List release assets
+        run: find release-assets -type f
+
+      - name: Create GitHub Release with assets
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            Release built by CI for tag ${{ github.ref_name }}.
+          files: release-assets/**/*
