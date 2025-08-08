@@ -81,6 +81,10 @@ jobs:
             CGO_ENABLED=0
           fi
 
+          if [ "${{ matrix.goos }}" = "linux" ] && [ "${{ matrix.goarch }}" = "arm64" ]; then
+            export CC=aarch64-linux-gnu-gcc
+          fi
+
           ldflags="-X 'main.version=${TAG}' -X 'main.buildTime=${BUILDTIME}'"
 
           env CGO_ENABLED=$CGO_ENABLED GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} \
