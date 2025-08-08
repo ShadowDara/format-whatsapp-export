@@ -1,3 +1,7 @@
+/* JS Code for format-whatsapp-export */
+/* Licensed under Appache 2.0 by Shadowdara */
+/* https://github.com/ShadowDara/format-whatsapp-export */
+
 /* Virtual Dom for the Messages */
 
 let count = 0;
@@ -15,7 +19,7 @@ document.getElementById("next_page").onclick = () => {
     count += 30;
     count_end += 30;
     page_nr += 1;
-    do_count(count, count_end);
+    do_count(count, count_end, window.json_data);
 };
 
 /* Switch to the Next Messages Page */
@@ -24,7 +28,7 @@ document.getElementById("previous_page").onclick = () => {
         count -= 30;
         count_end - 30;
         page_nr -= 1;
-        do_count(count, count_end);
+        do_count(count, count_end, window.json_data);
     } else {
         alert("There is no previous Page available!");
     }
@@ -101,6 +105,7 @@ for (const entry of window.json_data) {
     msg_count += 1;
 }
 document.getElementById("message_count").innerText = msg_count;
+
 do_count(count, count_end, window.json_data);
 
 /* Search Bar */

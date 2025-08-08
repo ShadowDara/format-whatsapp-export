@@ -24,7 +24,8 @@ git tag v0.1.0 && git push origin v0.1.0
 - [ ] need to listen on change for the settings
 - [ ] add Dark Mode
 - [ ] add Hover CSS
-- [x] ADD A WORKING VERSION OF THE PROGRAMM !!!
+- [ ] Build for Linux ARM
+- [ ] add more Languages
 
 ## Functionality
 
@@ -37,3 +38,7 @@ be formatted by js
 ## Problems
 - [ ] Programm makes an undefined behaviour when the folder with the chat export
 has multipple `.txt` files contained
+- [ ] Messages which are using [ENTER] do not work
+
+## LICENSES
+dialog - ISC Dialog Authors - https://github.com/sqweek/dialog

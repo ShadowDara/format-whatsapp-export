@@ -120,6 +120,6 @@ jobs:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           body: |
-            Release built by CI for tag ${{ github.ref_name }}.
+            Release built by CI for tag ${{ github.ref_name }}. See **[CHANGELOG.md](https://github.com/ShadowDara/format-whatsapp-export/blob/main/CHANGELOG.md)** for Changelogs.
           artifacts: "release-assets/*"
           artifactErrorsFailBuild: true

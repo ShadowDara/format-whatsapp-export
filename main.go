@@ -20,7 +20,7 @@ var (
 )
 
 func main() {
-	fmt.Println("Whatsapp Chat Export Formatter by Shadowdara")
+	fmt.Println("Whatsapp Chat Export Formatter\nby Shadowdara\n")
 	fmt.Println("https://github.com/ShadowDara/format-whatsapp-export\n")
 
 	fmt.Println("Version:", version)
@@ -82,6 +82,7 @@ func main() {
 		}
 
 		if empty2 {
+			// On Error
 			fmt.Println("\nThis did not work!\n")
 			
 			fmt.Println("Please that your export folder has only one txt file")
@@ -91,6 +92,7 @@ func main() {
 			fmt.Println("or create an ISSUE on Github about your Error")
 			fmt.Println("https://github.com/ShadowDara/format-whatsapp-export/issues")
 		} else {
+			// On no Error
 			fmt.Println("[PRESS ENTER]")
 			bufio.NewReader(os.Stdin).ReadString('\n')
 
@@ -101,10 +103,18 @@ func main() {
 		fmt.Println("[PRESS ENTER]")
 		bufio.NewReader(os.Stdin).ReadString('\n')
 
-		fmt.Println("Bye")
+		fmt.Println("LICENSES\n")
+		fmt.Println("View Here:\nhttps://github.com/ShadowDara/format-whatsapp-export?tab=readme-ov-file#licenses")
 
 		fmt.Println("[PRESS ENTER]")
 		bufio.NewReader(os.Stdin).ReadString('\n')
+
+		fmt.Println("Bye")
+
+		fmt.Println("[PRESS ENTER TO EXIT]")
+		bufio.NewReader(os.Stdin).ReadString('\n')
+
+		fmt.Println("Exit")
 	}
 }
 
