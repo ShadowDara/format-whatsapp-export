@@ -21,9 +21,10 @@ var (
 
 func main() {
 	fmt.Println("Whatsapp Chat Export Formatter by Shadowdara")
+	fmt.Println("https://github.com/ShadowDara/format-whatsapp-export\n")
+
 	fmt.Println("Version:", version)
 	fmt.Println("Build Time:", buildTime)
-	fmt.Println("https://github.com/ShadowDara/format-whatsapp-export")
 
 	fmt.Println("\nFormmating your Whatsapp Chat Export now\n")
 
@@ -81,19 +82,35 @@ func main() {
 		}
 
 		if empty2 {
-			fmt.Println("This did not work!")
+			fmt.Println("\nThis did not work!\n")
+			
+			fmt.Println("Please that your export folder has only one txt file")
+			fmt.Println("then restart the programm")
+			fmt.Println("this error will be fixed in future version\n")
+
+			fmt.Println("or create an ISSUE on Github about your Error")
+			fmt.Println("https://github.com/ShadowDara/format-whatsapp-export/issues")
 		} else {
-			fmt.Println("")
+			fmt.Println("[PRESS ENTER]")
+			bufio.NewReader(os.Stdin).ReadString('\n')
+
+			fmt.Println("If you liked this program and it saved you a lot of time")
+			fmt.Println("then please consider to star my Repostory ;)")
 		}
+
+		fmt.Println("[PRESS ENTER]")
+		bufio.NewReader(os.Stdin).ReadString('\n')
+
+		fmt.Println("Bye")
+
+		fmt.Println("[PRESS ENTER]")
+		bufio.NewReader(os.Stdin).ReadString('\n')
 	}
 }
 
 // bessere Methode, nach über geordneten ordner suchen und dann
 // datei mit dem gleichen namen wie der ordner suchen!
 func searchTxt(dir string) []string {
-	fmt.Println("Searching TXT File")
-	// Aktuelles Arbeitsverzeichnis ermitteln
-
 	// Pfad mit *.txt-Muster bauen
 	pattern := filepath.Join(dir, "*.txt")
 

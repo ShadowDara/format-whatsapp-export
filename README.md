@@ -8,6 +8,10 @@ Early Versions are working.
 git tag v1.0.0 && git push origin v1.0.0
 -->
 
+## How
+
+Download the programm for your OS and follow the intructions from the programm
+
 ## TODO / Ideas
 - [ ] add Description and Explanation to the Program
 - [ ] HTML and CSS Compressor
@@ -22,7 +26,14 @@ git tag v1.0.0 && git push origin v1.0.0
 - [ ] add Hover CSS
 - [x] ADD A WORKING VERSION OF THE PROGRAMM !!!
 
-## Changes
-- go writes the output in the html files as js which will then
+## Functionality
+
+go writes the output in the html files as js which will then
 be formatted by js
+
+## Changes
 - [see CHANGELOG](/CHANGELOG.md)
+
+## Problems
+- [ ] Programm makes an undefined behaviour when the folder with the chat export
+has multipple `.txt` files contained

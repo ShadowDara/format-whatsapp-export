@@ -21,7 +21,7 @@ var msgPattern = regexp.MustCompile(`^(\d{2}\.\d{2}\.\d{2}), (\d{2}:\d{2}) - (.*
 var ExeDir string
 
 func parse(filePath string, output_dir string) {
-    fmt.Println("Parsing the data...")
+    fmt.Println("Trying to parse the data...")
 
     exePath, err := os.Executable()
     if err != nil {
@@ -90,5 +90,5 @@ func parse(filePath string, output_dir string) {
     }
 
     //fmt.Println(output_dir)
-    fmt.Printf("HTML File created successfully in: %s/output/output.html\n", output_dir)
+    fmt.Printf("HTML File created successfully at: %s/output/output.html\n", output_dir)
 }
