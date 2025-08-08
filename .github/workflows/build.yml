@@ -16,9 +16,7 @@ jobs:
           - goos: linux
             goarch: amd64
             runner: ubuntu-latest
-          - goos: linux
-            goarch: arm64
-            runner: ubuntu-22.04
+          
           - goos: windows
             goarch: amd64
             runner: ubuntu-latest
@@ -65,7 +63,7 @@ jobs:
         run: |
           set -e
           mkdir -p dist
-          BINNAME="myprogram"
+          BINNAME="format-whatsapp-export"
           TAG="${{ steps.tag.outputs.TAG }}"
           BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
