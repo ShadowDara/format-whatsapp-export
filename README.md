@@ -2,6 +2,8 @@
 
 *currently in develepment, not usable yet, but **soon !!!***
 
+Early Versions are working.
+
 <!--
 git tag v1.0.0 && git push origin v1.0.0
 -->
@@ -18,7 +20,7 @@ git tag v1.0.0 && git push origin v1.0.0
 - [ ] need to listen on change for the settings
 - [ ] add Dark Mode
 - [ ] add Hover CSS
-- [ ] ADD A WORKING VERSION OF THE PROGRAMM !!!
+- [x] ADD A WORKING VERSION OF THE PROGRAMM !!!
 
 ## Changes
 - go writes the output in the html files as js which will then

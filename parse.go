@@ -20,7 +20,9 @@ type Message struct {
 var msgPattern = regexp.MustCompile(`^(\d{2}\.\d{2}\.\d{2}), (\d{2}:\d{2}) - (.*?): (.*)$`)
 var ExeDir string
 
-func parse(filePath string) {
+func parse(filePath string, output_dir string) {
+    fmt.Println("Parsing the data...")
+
     exePath, err := os.Executable()
     if err != nil {
         fmt.Printf("unable to get executable path: %v\n", err)
@@ -30,7 +32,7 @@ func parse(filePath string) {
 
     file, err := os.Open(filePath)
     if err != nil {
-        fmt.Println("Fehler beim Öffnen der Datei:", err)
+        fmt.Println("Error while opening file:", err)
         return
     }
     defer file.Close()
@@ -51,12 +53,13 @@ func parse(filePath string) {
             }
             messages = append(messages, msg)
         } else {
-            fmt.Println("Nicht erkannt oder Fortsetzung:", line)
+            // to much Terminal Spam with this print function
+            //fmt.Println("Nicht erkannt oder Fortsetzung:", line)
         }
     }
 
     if err := scanner.Err(); err != nil {
-        fmt.Println("Fehler beim Lesen der Datei:", err)
+        fmt.Println("Error while reading the file:", err)
         return
     }
 
@@ -72,9 +75,9 @@ func parse(filePath string) {
         panic(err)
     }
 
-    os.MkdirAll("output", os.ModePerm)
+    os.MkdirAll(output_dir + "/output", os.ModePerm)
 
-    outFile, err := os.Create("output/output.html")
+    outFile, err := os.Create(output_dir + "/output/output.html")
     if err != nil {
         panic(err)
     }
@@ -86,5 +89,6 @@ func parse(filePath string) {
         panic(err)
     }
 
-    fmt.Println("✅ HTML-Datei erfolgreich erstellt: output/output.html")
+    //fmt.Println(output_dir)
+    fmt.Printf("HTML File created successfully in: %s/output/output.html\n", output_dir)
 }
