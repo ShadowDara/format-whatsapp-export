@@ -83,12 +83,23 @@ function regexsearch(eingabe) {
     return new RegExp(escaped, 'i');
 }
 
+// Adding hyperlinks to a string
+function linkify(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, (url) => {
+        return `<i><a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a></i>`;
+    });
+}
+
 /* to add a Message on the HTML Site */
 function do_count(c1, c2, data) {
     document.getElementById("msg-store").innerHTML = "";
-    
+
     for (const entry of data.slice(c1, c2)) {
-        document.getElementById("msg-store").innerHTML += `<div class="main-box"><div class="author">${entry.sender}</div><div class="message">${entry.msg}</div><div class="time">${entry.date} ${entry.time}</div></div>`;
+        // Calling the Hyperlink Regex
+        const output = linkify(entry.msg);
+
+        document.getElementById("msg-store").innerHTML += `<div class="main-box"><div class="author">${entry.sender}</div><div class="message">${output}</div><div class="time">${entry.date} ${entry.time}</div></div>`;
     }
     
     document.getElementById("page_number").innerText = page_nr;

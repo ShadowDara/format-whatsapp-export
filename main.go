@@ -21,6 +21,8 @@ var (
 
 func main() {
 	fmt.Println("Whatsapp Chat Export Formatter\nby Shadowdara\n")
+
+	fmt.Println("More Infos here:")
 	fmt.Println("https://github.com/ShadowDara/format-whatsapp-export\n")
 
 	fmt.Println("Version:", version)
