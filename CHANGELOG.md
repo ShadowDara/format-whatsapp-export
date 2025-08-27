@@ -3,6 +3,8 @@
 ## V0.1.14
 - [x] BUG -> Page does no show any messages after reloading the browser window, but will show messages onclick nextpage or previous page - *2025-08-09*
 - [x] add links as hyperlinks - *2025-08-09*
+- added support for multiline messages
+- fixed a bug in the search function which showed wrong messages
 
 ## V0.1.13
 - Fixed a Bug where the export HTML does not show more than one Page
