@@ -1,0 +1,19 @@
+{
+  "name": "format-whatsapp-export",
+  "module": "index.ts",
+  "bin": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --minify",
+    "binary": "bun check && bun build && bun build dist/index.js --compile --outfile format-whatsapp",
+    "check": "bun x tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

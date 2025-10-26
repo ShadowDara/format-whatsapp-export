@@ -1,0 +1,10 @@
+checkstaticfiles.output.json
+checkstaticfiles.output.json.gz
+checkstaticfiles.data.go
+# if you dont changed the name
+
+static/data.js
+
+*.exe
+
+output.html
