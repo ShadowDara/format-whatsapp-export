@@ -1,0 +1,26 @@
+[package]
+name = "format-whatsapp-export"
+version = "0.1.0"
+edition = "2024"
+
+[profile.dev]
+opt-level = 0      # fastest build, slowest runtime
+lto = false        # "thin" works, but slows compile
+strip = false      # dont strip debug infos
+debug = true
+incremental = true
+
+[profile.release]
+opt-level = 3       # 0 -> no optimizing, 3 -> max speed
+lto = "fat"         # oder "thin" für schnelleren Build
+codegen-units = 1   # bessere Optimierung, aber langsamerer Compile
+panic = "abort"     # spart etwas Platz, leicht schneller
+strip = true        # entfernt Debug-Symbole (optional)
+debug = false
+incremental = false
+
+[dependencies]
+rfd = "0.15.4"
+
+[dev-dependencies]
+tempfile = "3"
