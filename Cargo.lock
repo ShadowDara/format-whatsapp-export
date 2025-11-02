@@ -451,7 +451,6 @@ dependencies = [
  "rfd",
  "tempfile",
  "wa_msg_parser",
- "wa_msg_to_json",
  "win-utf8-rs",
 ]
 
@@ -1385,20 +1384,13 @@ dependencies = [
 
 [[package]]
 name = "wa_msg_parser"
-version = "0.1.0"
+version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2c60af73334345b2e70c081c7b7070c1882e3532207381051b77510b0224b701"
+checksum = "b50915727a33759247bd798c69c9298fc0e9a30ace07e11f3b8f2e665ffc67b3"
 dependencies = [
  "regex",
-]
-
-[[package]]
-name = "wa_msg_to_json"
-version = "0.1.0"
-dependencies = [
  "serde",
  "serde_json",
- "wa_msg_parser",
 ]
 
 [[package]]
