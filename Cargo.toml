@@ -1,4 +1,4 @@
-# cargo run -p format-whatsapp-export
+# cargo run -p format-whatsapp-export --release
 
 [workspace]
 members = [
