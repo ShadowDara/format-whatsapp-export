@@ -1,13 +1,14 @@
 use msg_parser;
 use msg_to_json;
 
+use chrono::Local;
 use dirs_next::download_dir;
 use rfd::FileDialog;
 use std::fs;
 use std::io;
 use std::io::Write;
 use std::path::PathBuf;
-use win_utf8_rs;
+use win_utf8_rs; // Für Datum/Zeit
 
 // Function to select the Folder where the Export is located
 fn selectfolder() -> Option<PathBuf> {
@@ -77,6 +78,7 @@ fn start() -> Result<(), Box<dyn std::error::Error>> {
 
     // Ask what todo with the messages
     println!("\nWhat do you want todo with the Messages?");
+    println!("  [0] Exit");
     println!("  [1] Export as JSON to the Terminal");
     println!("  [2] Export as JSON to a File");
 
@@ -94,13 +96,26 @@ fn start() -> Result<(), Box<dyn std::error::Error>> {
     // Save the Messages in a File as JSON
     else if eingabe.trim() == "2" {
         let jsondata = msg_to_json::messages_to_json(&messages);
-        if let Some(name) = filename_without_extension(&path2) {
-            
-        } else {
-            return Err("Could not slice the filename".into());
-        }
-        let path = download_path("aktuelles date hier mit zeit" + name +".json");
-        let _ = write_json_to_file(&path.display().to_string(), &jsondata);
+
+        // Dateiname ohne Extension
+        let name = filename_without_extension(&path2).ok_or("Could not slice the filename")?;
+
+        // Datum/Zeit für den Dateinamen
+        let now = Local::now().format("%Y-%m-%d_%H-%M-%S").to_string();
+
+        // Neuer Dateiname: Datum + Originalname + .json
+        let new_filename = format!("{}_{}.json", now, name);
+
+        // Pfad im Download-Ordner
+        let path = download_path(&new_filename);
+
+        // Datei schreiben
+        write_json_to_file(&path.display().to_string(), &jsondata)?;
+        println!("File saved at {:?}", path);
+    }
+    // Exit the Programm with Code 0
+    else if eingabe.trim() == "0" {
+        std::process::exit(0);
     }
     // Except Condition
     else {

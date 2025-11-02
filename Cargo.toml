@@ -2,15 +2,15 @@
 
 [workspace]
 members = [
-    "crates/msg_parser",
+    "crates/wa_msg_parser",
     "crates/format-whatsapp-export",
-    "crates/msg_to_json"
+    "crates/wa_msg_to_json"
 ]
 resolver = "3"
 
 [workspace.dependencies]
-msg_parser = { path = "crates/msg_parser" }
-msg_to_json = { path = "crates/msg_to_json" }
+wa_msg_parser = { path = "crates/wa_msg_parser" }
+wa_msg_to_json = { path = "crates/wa_msg_to_json" }
 
 [profile.dev]
 opt-level = 0      # fastest build, slowest runtime

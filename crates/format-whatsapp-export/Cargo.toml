@@ -3,13 +3,18 @@ name = "format-whatsapp-export"
 version = "0.1.0"
 edition = "2024"
 default-run = "format-whatsapp-export"
+description = "Tool for analysing Whatsapp Exports"
+license = "Apache-2.0"
+repository = "https://github.com/ShadowDara/format-whatsapp-export"
+
 
 [dependencies]
 rfd = "0.15.4"
 win-utf8-rs = "0.2.0"
 dirs-next = "2"
-msg_parser = { workspace = true }
-msg_to_json = { workspace = true }
+chrono = { version = "0.4", features = ["serde"] }
+wa_msg_parser = { workspace = true }
+wa_msg_to_json = { workspace = true }
 
 [dev-dependencies]
 tempfile = "3"
