@@ -1,5 +1,5 @@
-use msg_parser;
-use msg_to_json;
+use wa_msg_parser;
+use wa_msg_to_json;
 
 use chrono::Local;
 use dirs_next::download_dir;
@@ -65,7 +65,7 @@ fn start() -> Result<(), Box<dyn std::error::Error>> {
 
     // Main txt File
     let content = fs::read_to_string(path)?;
-    let messages = msg_parser::parsetxt(content);
+    let messages = wa_msg_parser::parsetxt(content);
 
     // let mut msg_cpunter = 0;
 
@@ -90,12 +90,12 @@ fn start() -> Result<(), Box<dyn std::error::Error>> {
 
     // Print Messages to the Terminal as JSON
     if eingabe.trim() == "1" {
-        let jsondata = msg_to_json::messages_to_json(&messages);
+        let jsondata = wa_msg_to_json::messages_to_json(&messages);
         println!("{}", jsondata);
     }
     // Save the Messages in a File as JSON
     else if eingabe.trim() == "2" {
-        let jsondata = msg_to_json::messages_to_json(&messages);
+        let jsondata = wa_msg_to_json::messages_to_json(&messages);
 
         // Dateiname ohne Extension
         let name = filename_without_extension(&path2).ok_or("Could not slice the filename")?;

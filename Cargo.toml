@@ -2,14 +2,12 @@
 
 [workspace]
 members = [
-    "crates/wa_msg_parser",
     "crates/format-whatsapp-export",
     "crates/wa_msg_to_json"
 ]
 resolver = "3"
 
 [workspace.dependencies]
-wa_msg_parser = { path = "crates/wa_msg_parser" }
 wa_msg_to_json = { path = "crates/wa_msg_to_json" }
 
 [profile.dev]

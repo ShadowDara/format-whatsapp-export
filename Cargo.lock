@@ -448,10 +448,10 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "dirs-next",
- "msg_parser",
- "msg_to_json",
  "rfd",
  "tempfile",
+ "wa_msg_parser",
+ "wa_msg_to_json",
  "win-utf8-rs",
 ]
 
@@ -772,22 +772,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "488016bfae457b036d996092f6cb448677611ce4449e970ceaf42695203f218a"
 dependencies = [
  "autocfg",
-]
-
-[[package]]
-name = "msg_parser"
-version = "0.1.0"
-dependencies = [
- "regex",
-]
-
-[[package]]
-name = "msg_to_json"
-version = "0.1.0"
-dependencies = [
- "msg_parser",
- "serde",
- "serde_json",
 ]
 
 [[package]]
@@ -1397,6 +1381,24 @@ dependencies = [
  "js-sys",
  "serde",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "wa_msg_parser"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c60af73334345b2e70c081c7b7070c1882e3532207381051b77510b0224b701"
+dependencies = [
+ "regex",
+]
+
+[[package]]
+name = "wa_msg_to_json"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "wa_msg_parser",
 ]
 
 [[package]]
