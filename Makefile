@@ -1,6 +1,18 @@
-all: f
+all: test
 
-f:
+t:
+	$(MAKE) test
+
+test:
+	cargo nextest run
 	cargo fmt
 
-.PHONY: f
+# Running benchmarks requires nightly Rust
+bench:
+	cargo +nightly bench
+
+# Install
+i:
+	cargo install --locked cargo-nextest
+
+.PHONY: f bench i

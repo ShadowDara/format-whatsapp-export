@@ -1,8 +1,10 @@
+use msg_parser;
 use rfd::FileDialog;
-use std::io;
-use std::path::{Component, Path, PathBuf};
 use std::fs;
+use std::io;
 use std::io::Write;
+use std::path::PathBuf;
+use win_utf8_rs;
 
 // Function to select the Folder where the Export is located
 fn selectfolder() -> Option<PathBuf> {
@@ -73,15 +75,6 @@ fn searchtxt(path: PathBuf) -> io::Result<PathBuf> {
     Ok(txt_files[index - 1].clone())
 }
 
-struct ChatComponent {
-    date: String,
-    datetime: String,
-    sender: String,
-    message: String,
-}
-
-fn parsetxt(content: String) {}
-
 // Funktion to start the Analysing
 fn start() -> Result<(), Box<dyn std::error::Error>> {
     // Get the Path
@@ -96,12 +89,18 @@ fn start() -> Result<(), Box<dyn std::error::Error>> {
     // Main txt File
     let selected = searchtxt(path)?;
     let content = fs::read_to_string(selected)?;
-    Ok (())
+    let messages = msg_parser::parsetxt(content);
+    for message in messages {
+        println!("{}", message.message);
+    }
+    Ok(())
 }
 
 const VERSION: &str = "3.0.0";
 
 fn main() {
+    let _ = win_utf8_rs::enable_utf8();
+
     println!("Format WhatsApp Export V{}", VERSION);
     println!("Menu");
 
