@@ -21,6 +21,8 @@ var (
 
 func main() {
 	fmt.Println("Whatsapp Chat Export Formatter\nby Shadowdara\n")
+
+	fmt.Println("More Infos here:")
 	fmt.Println("https://github.com/ShadowDara/format-whatsapp-export\n")
 
 	fmt.Println("Version:", version)
@@ -97,19 +99,19 @@ func main() {
 			bufio.NewReader(os.Stdin).ReadString('\n')
 
 			fmt.Println("If you liked this program and it saved you a lot of time")
-			fmt.Println("then please consider to star my Repostory ;)")
+			fmt.Println("then please consider to star my Repostory ;)\n")
 		}
 
 		fmt.Println("[PRESS ENTER]")
 		bufio.NewReader(os.Stdin).ReadString('\n')
 
 		fmt.Println("LICENSES\n")
-		fmt.Println("View Here:\nhttps://github.com/ShadowDara/format-whatsapp-export?tab=readme-ov-file#licenses")
+		fmt.Println("View Here:\nhttps://github.com/ShadowDara/format-whatsapp-export?tab=readme-ov-file#licenses\n")
 
 		fmt.Println("[PRESS ENTER]")
 		bufio.NewReader(os.Stdin).ReadString('\n')
 
-		fmt.Println("Bye")
+		fmt.Println("Bye\n")
 
 		fmt.Println("[PRESS ENTER TO EXIT]")
 		bufio.NewReader(os.Stdin).ReadString('\n')

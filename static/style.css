@@ -53,6 +53,15 @@ main {
     padding: 0.5rem;
 }
 
+/* Custom Link Color and Hover */
+.main-box .message a {
+    color: #67005cff;
+}
+
+.main-box .message a:hover {
+    color: #d400ffff;
+}
+
 .main-box .time {
     text-align: right;
 }

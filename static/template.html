@@ -16,14 +16,14 @@
     <header>
         <span class="header-container">
             <p id="page_number_css">
-                <span>Page: </span>
+                <span id="0001">Page: </span>
                 <span id="page_number"></span>
             </p>
         </span>
 
         <span class="header-container">
             <p id="message_count_css">
-                <span>Message Count: </span>
+                <span id="0002">Message Count: </span>
                 <span id="message_count"></span>
             </p>
         </span>
@@ -80,9 +80,12 @@
         </span>
     </footer>
 
-    <script defer src="data.js">
+    <script src="data.js">
         /* Chat Data */
-        /* window.json_data = {{.}}; */
+        /* window.json_data = {{jsonData}}; */
+
+        /* Language Data */
+        /* window.selected_lang = {{langData}}; */
     </script>
 
     <script src="dom.js"></script>

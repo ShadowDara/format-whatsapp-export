@@ -61,7 +61,7 @@ jobs:
         run: |
           set -e
           mkdir -p dist
-          BINNAME="format-whatsapp-export"
+          BINNAME="format-wa-export"
           TAG="${{ steps.tag.outputs.TAG }}"
           BUILDTIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
