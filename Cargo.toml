@@ -1,19 +1,22 @@
 [package]
 name = "format-whatsapp-export"
-version = "0.1.0"
+version = "3.0.0"
 edition = "2024"
 default-run = "format-whatsapp-export"
-description = "Tool for analysing Whatsapp Exports"
+description = "a Tool for analysing Whatsapp Chat Exports and converting them"
 license = "Apache-2.0"
 repository = "https://github.com/ShadowDara/format-whatsapp-export"
-
+authors = ["Shadowdara"]
+readme = "README.md"
+include = ["LICENSE", "README.md", "Cargo.toml", "/src/"]
+keywords = ["parser", "whatsapp", "export", "stats"]
 
 [dependencies]
 rfd = "0.15.4"
 win-utf8-rs = "0.2.0"
 dirs-next = "2"
 chrono = { version = "0.4", features = ["serde"] }
-wa_msg_parser = { version = "0.2.3", features = ["json", "serde"] }
+wa_msg_parser = { version = "0.2.3", features = ["json"] }
 
 [dev-dependencies]
 tempfile = "3"
