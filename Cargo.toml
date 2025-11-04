@@ -1,8 +1,7 @@
 [package]
-name = "format-whatsapp-export"
+name = "wa-stats"
 version = "3.0.0"
 edition = "2024"
-default-run = "format-whatsapp-export"
 description = "a Tool for analysing Whatsapp Chat Exports and converting them"
 license = "Apache-2.0"
 repository = "https://github.com/ShadowDara/format-whatsapp-export"
@@ -13,7 +12,7 @@ keywords = ["parser", "whatsapp", "export", "stats"]
 
 [dependencies]
 rfd = "0.15.4"
-win-utf8-rs = "0.2.0"
+win-utf8-rs = "0.2.1"
 dirs-next = "2"
 chrono = { version = "0.4", features = ["serde"] }
 wa_msg_parser = { version = "0.2.3", features = ["json"] }

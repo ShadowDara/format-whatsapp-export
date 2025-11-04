@@ -443,18 +443,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "format-whatsapp-export"
-version = "3.0.0"
-dependencies = [
- "chrono",
- "dirs-next",
- "rfd",
- "tempfile",
- "wa_msg_parser",
- "win-utf8-rs",
-]
-
-[[package]]
 name = "futures-channel"
 version = "0.3.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1383,6 +1371,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "wa-stats"
+version = "3.0.0"
+dependencies = [
+ "chrono",
+ "dirs-next",
+ "rfd",
+ "tempfile",
+ "wa_msg_parser",
+ "win-utf8-rs",
+]
+
+[[package]]
 name = "wa_msg_parser"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1538,9 +1538,9 @@ dependencies = [
 
 [[package]]
 name = "win-utf8-rs"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "84be40970613874d0c1568593a2189aae41098794c5d658e3530be3b8db15d2a"
+checksum = "391e2a048918eb718eda2c1a19b8b95e77f4419157bb9b548d8adf8153722317"
 dependencies = [
  "windows",
 ]
