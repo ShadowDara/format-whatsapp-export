@@ -2,6 +2,7 @@
 
 ## 16.02.2026
 - switched back to GO !
+- restructured the Project
 
 ## V0.1.14
 - [x] BUG -> Page does no show any messages after reloading the browser window, but will show messages onclick nextpage or previous page - *2025-08-09*

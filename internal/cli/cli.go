@@ -1,4 +1,4 @@
-package main
+package cli
 
 import (
 	"bufio"
@@ -19,7 +19,7 @@ var (
 	buildTime = "unknown"
 )
 
-func main() {
+func Cli() {
 	fmt.Println("Whatsapp Chat Export Formatter\nby Shadowdara\n")
 
 	fmt.Println("More Infos here:")
