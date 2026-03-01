@@ -1,6 +1,8 @@
 # Main for WA Data Analyzer
 
 import re
+from datetime import datetime
+from collections import Counter
 
 import chat_analyzer.wa.data as data
 
@@ -22,15 +24,38 @@ def main():
         m = pattern.match(line)
         if m:
             date, time, author, message = m.groups()
-            messagedata: data.Message = data.Message(date, time, author, message)
+
+            timestamp = datetime.strptime(
+                f"{date} {time}",
+                "%d.%m.%y %H:%M"
+            )
+
+            messagedata: data.Message = data.Message(timestamp, author, message)
             messages.append(messagedata)
     
     print(f"Parsed {len(lines)} Messaged!")
     
-    # for me in messages:
-    #     print(me.date, me.time, me.author, me.text)
+    for me in messages:
+        # print(me.timestamp, me.author, me.text)
     #     # print(me.timestamp)
-    #     pass
+        pass
 
     # Analyse the Messages here
+    per_month = Counter()
+
+    for m in messages:
+        key = m.timestamp.strftime("%Y-%m")
+        per_month[key] += 1
     
+    for month, count in sorted(per_month.items()):
+        print(month, count)
+    
+    # Analyse by User
+    users = {}
+    for m in messages:
+        if m.author not in users:
+            users[m.author] = 0
+        users[m.author] += 1
+    
+    for key, value in users.items():
+        print(f"User {key}: Messages {value}")

@@ -3,7 +3,6 @@ from datetime import datetime
 
 @dataclass
 class Message:
-    date: str
-    time: str
+    timestamp: datetime
     author: str | None
     text: str
