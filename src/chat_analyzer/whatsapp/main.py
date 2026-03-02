@@ -1,17 +1,17 @@
-# Main for WA Data Analyzer
+# Main for WhatsApp Data Analyzer
 
 import re
 from datetime import datetime
 from collections import Counter
 
-import chat_analyzer.wa.data as data
+import chat_analyzer.whatsapp.data as data
 
 pattern = re.compile(
     r'^(\d{1,2}\.\d{1,2}\.\d{2,4}),\s(\d{1,2}:\d{2})\s-\s([^:]+?):\s(.*)$'
 )
 
 # Main function
-def main():
+def main() -> None:
     # Load Input
     lines = ""
 

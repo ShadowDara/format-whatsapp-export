@@ -1,0 +1,8 @@
+from dataclasses import dataclass
+from datetime import datetime
+
+@dataclass
+class Message:
+    timestamp: datetime
+    author: str
+    content: str
