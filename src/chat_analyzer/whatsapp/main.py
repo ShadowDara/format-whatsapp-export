@@ -2,6 +2,7 @@
 
 import re
 from datetime import datetime
+from datetime import timedelta
 from collections import Counter
 
 import chat_analyzer.whatsapp.data as data
@@ -9,6 +10,30 @@ import chat_analyzer.whatsapp.data as data
 pattern = re.compile(
     r'^(\d{1,2}\.\d{1,2}\.\d{2,4}),\s(\d{1,2}:\d{2})\s-\s([^:]+?):\s(.*)$'
 )
+
+# Function to calculate the gab time between messages
+def print_message_gaps(messages: list[data.Message]) -> None:
+    """Gibt alle Nachrichtenlücken >= 24 Stunden aus."""
+
+    if len(messages) < 2:
+        return
+
+    messages.sort(key=lambda m: m.timestamp)
+
+    min_gap = timedelta(hours=24)
+
+    print("\n--- Nachrichtenlücken (>= 24 Stunden) ---")
+
+    for previous, current in zip(messages, messages[1:]):
+        gap = current.timestamp - previous.timestamp
+
+        if gap >= min_gap:
+            print(
+                f"{previous.timestamp:%d.%m.%Y %H:%M} ({previous.author})"
+                f" -> "
+                f"{current.timestamp:%d.%m.%Y %H:%M} ({current.author})"
+                f" | Lücke: {gap}"
+            )
 
 # Main function
 def main() -> None:
@@ -59,3 +84,5 @@ def main() -> None:
     
     for key, value in users.items():
         print(f"User {key}: Messages {value}")
+
+    print_message_gaps(messages)
